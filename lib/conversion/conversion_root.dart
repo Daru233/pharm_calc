@@ -13,7 +13,7 @@ class _ConversionRootState extends State<ConversionRoot> {
   final double SPACED_BOX = 4;
 
   double active_ingredient = 3;
-  double excipients = 500;
+  double excipients = 750;
 
   double percentage = 0;
   String ratio = '';
@@ -31,8 +31,7 @@ class _ConversionRootState extends State<ConversionRoot> {
   Widget build(BuildContext context) {
 
     // extract to get percentage method
-    // TODO fix bug - 3g ai, 500g exc
-    percentage = (active_ingredient / excipients) * 1000;
+    percentage = (active_ingredient / excipients) * 100;
     percentage = double.parse((percentage).toStringAsFixed(3));
 
     // extract to get ratio method
@@ -53,7 +52,7 @@ class _ConversionRootState extends State<ConversionRoot> {
         children: <Widget> [
           LabelValuePair(label:'Active Ingredient (g):', value: active_ingredient),
           SizedBox(height: SPACED_BOX),
-          LabelValuePair(label:'Product (g):', value: excipients),
+          LabelValuePair(label:'Excipients (g):', value: excipients),
           SizedBox(height: SPACED_BOX),
           LabelValuePair(label:'Percentage %:', value: percentage),
           SizedBox(height: SPACED_BOX),
