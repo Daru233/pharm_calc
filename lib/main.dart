@@ -48,7 +48,7 @@ class _PharmCalcState extends State<PharmCalc> {
                 controller: _controller,
                 count: 3,
                 effect:  SlideEffect(
-                    spacing:  8.0,
+                    spacing:  12.0,
                     radius:  4.0,
                     dotWidth:  12.0,
                     dotHeight:  12.0,

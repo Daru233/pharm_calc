@@ -6,7 +6,7 @@ class Formulations extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.deepPurple[100],
+      color: Colors.blue[100],
       child: Center(
         child: Text('Formulations'),
       ),
