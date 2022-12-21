@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pharm_calc/conversion/conversion_root.dart';
-import 'package:pharm_calc/redux/actions.dart';
+import 'package:pharm_calc/redux/reduxActions.dart';
 import 'package:pharm_calc/redux/app_state.dart';
 import 'package:pharm_calc/redux/reducer.dart';
 import 'package:pharm_calc/root_pages/calculations.dart';
@@ -51,13 +50,39 @@ class FlutterReduxApp extends StatelessWidget {
                     );
                   },
                 ),
+                StoreConnector<AppState, VoidCallback>(
+                  converter: (store) {
+                    return () => store.dispatch(DecrementByOne());
+                    },
+                  builder: (context, callback) {
+                    return FloatingActionButton(
+                      onPressed: () => {
+                        StoreProvider.of<AppState>(context).dispatch(SetCount(setValue: 0))
+                      },
+                      tooltip: 'Decrement',
+                      child: Icon(Icons.exposure_zero)
+                    );
+                  },
+                ),
+                StoreConnector<AppState, VoidCallback>(
+                  converter: (store) {
+                    return () => store.dispatch(DecrementByOne());
+                  },
+                  builder: (context, callback) {
+                    return FloatingActionButton(
+                        onPressed: callback,
+                        tooltip: 'Decrement',
+                        child: Icon(Icons.exposure_minus_1)
+                    );
+                  },
+                ),
               ],
             ),
           ),
 
           floatingActionButton: StoreConnector<AppState, VoidCallback>(
             converter: (store) {
-              return () => store.dispatch(IncrementByOne(updatedCounter: 1));
+              return () => store.dispatch(IncrementByOne());
             },
             builder: (context, callback) {
               return FloatingActionButton(
