@@ -50,6 +50,7 @@ class _CardSmallState extends State<CardSmall> {
               fontWeight: FontWeight.bold,
             ),
             decoration: InputDecoration(
+              labelText: '4',
               contentPadding: EdgeInsets.only(top: 6),
               border: InputBorder.none,
               focusedBorder: InputBorder.none,

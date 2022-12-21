@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pharm_calc/PharmCalc.dart';
 import 'package:pharm_calc/redux/reduxActions.dart';
 import 'package:pharm_calc/redux/app_state.dart';
 import 'package:pharm_calc/redux/reducer.dart';
@@ -10,8 +11,9 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 
 void main() {
-  runApp(FlutterReduxApp(
-    title: 'Flutter Redux Demo',
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: PharmCalc(),
   ));
 }
 
@@ -94,88 +96,6 @@ class FlutterReduxApp extends StatelessWidget {
             },
           ),
         ),
-      ),
-    );
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-class PharmCalc extends StatefulWidget {
-  const PharmCalc({Key? key}) : super(key: key);
-
-  @override
-  State<PharmCalc> createState() => _PharmCalcState();
-}
-
-class _PharmCalcState extends State<PharmCalc> {
-
-  double left = 35.0;
-  double right = 35.0;
-  double top = 40.0;
-  double bottom = 0.0;
-
-  PageController _controller = PageController();
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-      child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        body: Stack(
-          children: [
-            PageView(
-              controller: _controller,
-              children: [
-                Dilutions(),
-                Calculations(),
-                Formulations(),
-              ],
-            ),
-
-            Container(
-              alignment: Alignment(0, 0.8),
-              child: SmoothPageIndicator(
-                  controller: _controller,
-                  count: 3,
-                  effect:  SlideEffect(
-                      spacing:  12.0,
-                      radius:  4.0,
-                      dotWidth:  12.0,
-                      dotHeight:  12.0,
-                      paintStyle:  PaintingStyle.fill,
-                      strokeWidth:  2,
-                      dotColor:  Colors.white38,
-                      activeDotColor:  Colors.white,
-                  ),
-              ),
-            ),
-          ],
-        )
       ),
     );
   }

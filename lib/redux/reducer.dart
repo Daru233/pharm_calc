@@ -3,6 +3,14 @@ import 'package:pharm_calc/redux/app_state.dart';
 
 AppState IncrementByOneReducer(AppState state, dynamic action) {
 
+  if(action is SetConversionValue){
+    return AppState(conversionValue: action.setConversionValue);
+  }
+
+  if(action is SetMetricUnitsValue){
+    return AppState(metricUnitsValue: action.setConversionValue);
+  }
+
   if(action is IncrementByOne){
     return AppState(counter: state.counter + 1);
   }
