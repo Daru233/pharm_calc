@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pharm_calc/root_pages/common/CardSmall.dart';
 
 class Dilutions extends StatelessWidget {
   const Dilutions ({Key? key}) : super(key: key);
@@ -167,88 +168,15 @@ class Dilutions extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  InputValueContainer(),
-                SizedBox(height: 20),
-                InputMeasurementContainer()
+                  CardSmall(title: '300', subtitle: 'value', rgbValue: Color.fromRGBO(203, 190, 215, 1)),
+                  SizedBox(height: 20),
+                  CardSmall(title: 'mg', subtitle: 'g', rgbValue: Color.fromRGBO(203, 190, 215, 1)),
                 ],
               ),
             )
           ],
         );
   }
-
-  Container InputValueContainer() {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-        color:Color.fromRGBO(203, 190, 215, 1),
-      ),
-      height: 70,
-      width: 160,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text(
-              '300',
-              style: GoogleFonts.lato(
-                  textStyle: TextStyle(
-                      color: Color.fromRGBO(7, 20, 39, 1)
-                  ),
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold
-              )
-          ),
-          Text(
-            'value',
-              style: GoogleFonts.lato(
-                  textStyle: TextStyle(
-                      color: Color.fromRGBO(7, 20, 39, 1)
-                  ),
-                  fontSize: 12,
-                  fontWeight: FontWeight.bold
-              )
-          )
-        ],
-      ),
-    );
-  }
-
-Container InputMeasurementContainer() {
-  return Container(
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(16),
-      color: Color.fromRGBO(36, 52, 78, 1),
-    ),
-    height: 70,
-    width: 160,
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Text(
-            'mg',
-            style: GoogleFonts.lato(
-                textStyle: TextStyle(
-                    color: Colors.white),
-                fontSize: 32,
-                fontWeight: FontWeight.bold
-            )
-        ),
-        Text(
-            'measurement',
-            style: GoogleFonts.lato(
-                textStyle: TextStyle(
-                    color: Colors.white),
-                fontSize: 12,
-                fontWeight: FontWeight.bold
-            )
-        )
-      ],
-    ),
-  );
-}
-
 
 Text DilutionsTextBuilder() {
     return Text(
