@@ -14,6 +14,3 @@ class AppState {
     this.metricUnitsValue = MetricUnits.GRAM,
   });
 }
-
-
-// https://www.youtube.com/watch?v=60_2HlagOzg&t=851s

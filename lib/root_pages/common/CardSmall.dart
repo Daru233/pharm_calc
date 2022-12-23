@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pharm_calc/redux/app_state.dart';
+
+import '../../redux/reduxActions.dart';
 
 class CardSmall extends StatefulWidget {
   final String title;
@@ -35,41 +39,48 @@ class _CardSmallState extends State<CardSmall> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          TextField(
-            controller: ValueController,
-            onChanged: (v) => {
-              ValueController.text = v,
-              ValueController.selection =
-                TextSelection.collapsed(offset: ValueController.text.length),
-              print(v)
-              },
-            keyboardType: TextInputType.number,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
-            decoration: InputDecoration(
-              labelText: '4',
-              contentPadding: EdgeInsets.only(top: 6),
-              border: InputBorder.none,
-              focusedBorder: InputBorder.none,
-            ),
+          StoreConnector<AppState, double>(
+            converter: (store) => store.state.conversionValue,
+            builder: (context, double conversionValue) {
+              return TextField(
+                controller: ValueController..text='${conversionValue.toInt()}',
+                onChanged: (v) => {
+                  ValueController.text = v,
+                  ValueController.selection =
+                      TextSelection.collapsed(offset: ValueController.text.length),
+                },
+                keyboardType: TextInputType.number,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+                decoration: InputDecoration(
+                  contentPadding: EdgeInsets.only(top: 6),
+                  border: InputBorder.none,
+                  focusedBorder: InputBorder.none,
+                ),
+              );
+            },
           ),
-          Container(
-            child: Text(
-                widget.subtitle,
-                style: GoogleFonts.lato(
-                    textStyle: TextStyle(
-                        color: Color.fromRGBO(7, 20, 39, 1)
-                    ),
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold
-                )
-            ),
-          )
+          returnSubtitle()
         ],
       ),
     );
+  }
+
+  Container returnSubtitle() {
+    return Container(
+          child: Text(
+              widget.subtitle,
+              style: GoogleFonts.lato(
+                  textStyle: TextStyle(
+                      color: Color.fromRGBO(7, 20, 39, 1)
+                  ),
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold
+              )
+          ),
+        );
   }
 }

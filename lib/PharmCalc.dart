@@ -24,7 +24,7 @@ class _PharmCalcState extends State<PharmCalc> {
     IncrementByOneReducer,
     initialState: const AppState(
       counter: 0,
-      conversionValue: 1,
+      conversionValue: 3.0,
       metricUnitsValue: MetricUnits.GRAM,
     ),
   );

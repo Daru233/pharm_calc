@@ -52,9 +52,9 @@ class FlutterReduxApp extends StatelessWidget {
                     );
                   },
                 ),
-                StoreConnector<AppState, VoidCallback>(
+                StoreConnector<AppState, int>(
                   converter: (store) {
-                    return () => store.dispatch(DecrementByOne());
+                      return store.state.counter;
                     },
                   builder: (context, callback) {
                     return FloatingActionButton(
